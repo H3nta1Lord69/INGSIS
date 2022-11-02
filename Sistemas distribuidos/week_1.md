@@ -40,7 +40,7 @@ Algunas de las ventajas que aportan son:
 ### Objetivos 🚀
 Un sistema distribuido debe hacer que los recursos sean fácilmente accesibles; debe ocultar de manera razonable el hecho de que los recursos están distribuidos por toda la red; debe ser abierto; y debe ser escalable.
 - Vertical scalability
-- Horizontal scalability
+- Horizontal scalability 
 
 #### Escalabilidad
 La escalabilidad de un sistema se puede medir de acuerdo con al menos tres dimensiones; su tamaño 
