@@ -1,14 +1,14 @@
 ### General Content
 
-Semana 1: Presentación curso, introducción a los sistemas distribuidos
-Semana 2: Arquitecturas
-Semana 3: Hilos
-Semana 4: Comunicación
-Semana 5: Cliente servidor
-Semana 6: Procesos y comunicación
-Semana 7: Nombre
-Semana 8: Sincronización
-Semana 9: Consistencia y Replicación
-Semana 10: Tolerancia a fallas
-Semana 11: Seguridad
-Semana 12: Desarrollo de los sistemas distribuidos
+Semana 1: Presentación curso
+Semana 2: Conoce a tu enemigo
+Semana 3: Conócete a ti mismo
+Semana 4: Uso seguro de nuevas tecnologías
+Semana 5: Ingeniería social
+Semana 6: Ciberseguridad en la nube
+Semana 7: Seguridad en dispositivos móviles
+Semana 8: La web
+Semana 9: Relación segura con clientes y proveedores
+Semana 10: Metodologías de desarrollo de software
+Semana 11: Análisis de negocio
+Semana 12: Parcial final

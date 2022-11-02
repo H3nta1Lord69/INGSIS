@@ -1,14 +1,12 @@
 ### General Content
 
-Semana 1: Presentación curso, introducción a los sistemas distribuidos
-Semana 2: Arquitecturas
-Semana 3: Hilos
-Semana 4: Comunicación
-Semana 5: Cliente servidor
-Semana 6: Procesos y comunicación
-Semana 7: Nombre
-Semana 8: Sincronización
-Semana 9: Consistencia y Replicación
-Semana 10: Tolerancia a fallas
-Semana 11: Seguridad
-Semana 12: Desarrollo de los sistemas distribuidos
+Semana 1: Presentación curso, primeros acercamientos conceptuales sobre la inteligencia artificial
+Semana 2: ¿Qué es la IA?
+Semana 3: Diferencias entre la automatización y la inteligencia artificial
+Semana 4: Autómatas finitos deterministas
+Semana 5: Autómatas finitos no deterministas
+Semana 6: Expresiones regulares de un autómata finito
+Semana 7: Conversión de AFND a AFD
+Semana 8: Conversión AFND a AFD con transiciones vacías
+Semana 9: Redes neuronales artificiales
+Semana 10: Perceptrón
