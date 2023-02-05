@@ -1,0 +1,46 @@
+Algoritmo perceptron
+	//se define el tipo de varible
+	Definir w,b,p Como Entero
+	Dimension w[2]
+	Dimension p[4,2]
+	Dimension se[4] // 4 salidas = 1 interaccion
+	Dimension a[4]
+	Para i<-1 Hasta 2 Hacer
+		w[i] <- azar(1)+2
+	FinPara
+	b <- azar(1)+2
+	// ingreso de valores de entrada P
+	Para J<-1 Hasta 2 Hacer
+		Para i<-1 Hasta 4 Hacer
+			Escribir 'valor de entrada ',i,',para el P',J,':'
+			Leer p[i,J]
+		FinPara
+	FinPara
+	// ingreso de valores de salida deseada
+	Para i<-1 Hasta 4 Hacer
+		Escribir 'valor de SE',i,':'
+		Leer se[i]
+	FinPara
+	e <- 0
+	Para n<-1 Hasta 100 Hacer
+		Para i<-1 Hasta 4 Hacer
+			sn <- (w[1]*p[i,1])+(w[2]*p[i,2])+b
+			Si sn>=1 Entonces
+				a[i] <- 1
+			SiNo
+				a[i] <- 0
+			FinSi
+			e <- se[i]-a[i]
+			w[1] <- w[1]+(e*p[i,1])
+			w[2] <- w[2]+(e*p[i,2])
+			b <- b+e
+		FinPara
+	FinPara
+	Para i<-1 Hasta 4 Hacer
+		Escribir 'valor de SO',i,',:',a[i]
+	FinPara
+	Para i<-1 Hasta 2 Hacer
+		Escribir 'valor peso w',i,': ',w[i]
+	FinPara
+	Escribir 'valor bias b: ',b
+FinAlgoritmo

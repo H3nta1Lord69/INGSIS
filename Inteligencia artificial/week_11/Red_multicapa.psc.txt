@@ -1,0 +1,88 @@
+Algoritmo Red_Multicapa
+		//funsion de salida sigmoide simetrico
+		Definir w,b,p,st_1,snt,at Como Real
+		escribir ("escriba el numero de entradas")
+		leer ne // siendo ne = No. entradas
+		escribir ("escriba el numero de posibilidades")
+		leer np // siendo np= No.posibilidades que se refiere a las combinaciones que pueden tener las entradas
+		escribir ("defina el numero de neuronas")
+		leer nn //numero de neuronas
+		Dimension w[ne]
+		Dimension p[np,ne]
+		Dimension a[np,nn]
+		Dimension se[np]
+		Dimension st_1[np,nn]
+		Dimension at[np]
+		//ingreso de valores al azar 
+		Para j <- 1 Hasta ne Con Paso 1 Hacer
+			w[j] <- azar(100)+1
+		Fin Para
+		b <- azar(100)+1
+		// ingreso de valores de entrada P
+		Para J<-1 Hasta ne Hacer
+			Para I<-1 Hasta np Hacer
+				Escribir 'valor de entrada ',I,',para el P',J,':'
+				Leer p[I,J]
+			FinPara
+		FinPara
+		//ingreso de valores de salida deseada
+			Para I<-1 Hasta np Hacer
+				Escribir 'valor de SE',I,' de la neurona ',J,' :'
+				Leer se[I] //se = salida esperada
+			FinPara
+		
+		//valores iniciales
+		e<-0
+		sn <- 0
+		aprendizaje<-0.01
+		euler <- 2.72
+		snt<-0
+		k<-0 //valor para conteo de interacciones opcional
+		Repetir
+			Para m <- 1 Hasta nn Con Paso 1 Hacer
+				//se define las interacciones
+				// PASO 1
+				para i <- 1 hasta np Con Paso 1 Hacer
+					Para j<- 1 Hasta ne Con Paso 1 Hacer
+						sn = (w[j]*p[i,j])+sn
+					Fin Para
+					sn= sn + b
+					//funsion de salida
+					Si sn >= 1 Entonces
+						a[i,m] = 1/(1+euler^(-sn))
+					SiNo 
+						a[i,m] = 0
+					Fin Si
+					sn =0 // salida neta valor inicial
+					snt= a[i,m]+snt
+					Si snt >= 1 Entonces
+						at[i] = se[i]
+					SiNo 
+						at[i] = 0
+					Fin Si
+					//paso 2 
+					e=se[i]-at[i]
+					st=-2*at[i]*e
+						//paso 3
+						//nuevos valores
+						Para j<- 1 Hasta ne Con Paso 1 Hacer
+							w[j]=w[j]+(aprendizaje*st*a[i,m])
+						Fin Para
+						b=b+(aprendizaje*st)
+				Fin para
+				snt=0
+			fin para
+			k<-k+1
+		Hasta Que  e=0
+		//resultados 
+			Para I<-1 Hasta np Hacer
+				Escribir 'valor de SO',I,' de la neurona total: ',at[I]
+			FinPara
+		
+		Para i<-1 Hasta ne Con Paso 1 Hacer
+			Escribir 'valor peso w',i,': ',w[i]
+		Fin Para
+		Escribir 'valor bias b: ',b
+		Escribir 'numero de interaciones: ',k
+		
+FinAlgoritmo
