@@ -1,0 +1,46 @@
+Algoritmo Metodo_de_Jacobi
+	dimension M[3,4] //tamaño de la matriz
+	//siendo j fila e i columna
+	para j <- 1 hasta 3 Con Paso 1 Hacer
+		para i <- 1 hasta 4 Con Paso 1 Hacer
+			Escribir ('digite los valores para la fila '),j
+			leer a //se lee el valor de las ecuaciones
+			M[j,i] <- a
+		FinPara
+	FinPara
+	//valores iniciales
+	x1 = 0
+	x2 = 0
+	x3 = 0
+	E = 0.01
+	// calculos 
+	Escribir ('escriba el numero de intaracciones')
+	leer N
+	Para A <- 1 Hasta N Con Paso 1 Hacer
+		
+		x1<- (M[1,4]/M[1,1])+ ((-1*M[1,2]* x2)/M[1,1]) + ((-1*M[1,3]*x3)/M[1,1])
+		x2<- (M[2,4]/M[2,2]) + ((-1*M[2,1]* x1)/M[2,2]) +((-1*M[2,3]*x3)/M[2,2])
+		x3<- (M[3,4]/M[3,3]) + ((-1*M[3,1]* x1)/M[3,3])+ ((-1*M[3,2]*x2)/M[3,3])
+	Fin Para
+	Escribir ('el valor de x1 es: '),x1
+	Escribir ('el valor de x2 es: '),x2
+	Escribir ('el valor de x3 es: '),x3
+	
+	R1 <- (x1*M[1,1])+(x2*M[1,2])+(x3*M[1,3])
+	R2 <- (x1*M[2,1])+(x2*M[2,2])+(x3*M[2,3])
+	R3 <- (x1*M[3,1])+(x2*M[3,2])+(x3*M[3,3])
+	Escribir ('comprobando resultados obtenidos ')
+	Escribir ('resultado fila 1: '),R1
+	Escribir ('resultado fila 2: '),R2
+	Escribir ('resultado fila 3: '),R3
+	Escribir ('comprobando resultados esperados ')
+	Escribir ('resultado fila 1: '),M[1,4]
+	Escribir ('resultado fila 2: '),M[2,4]
+	Escribir ('resultado fila 3: '),M[3,4]
+	
+	
+	
+	
+	
+	
+FinAlgoritmo
