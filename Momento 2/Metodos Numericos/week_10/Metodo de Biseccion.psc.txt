@@ -1,0 +1,47 @@
+Algoritmo sin_titulo
+	Dimension IF[2]
+	Dimension f[2]
+	para i=1 hasta 2 Hacer
+		Escribir ("escriba el valor inicial para el intervalo "),i
+		leer  a//valorx = el valor qeu acompaña a x
+		IF[i]=a
+	FinPara
+	Escribir ("designe los grados de la funsion")
+	leer Grados//grados= para conocer el No. de x en la funsion
+	Dimension x[grados+1]
+	Escribir ("escriba el valor que acompaña a x0")
+	leer valorx //valorx = el valor qeu acompaña a x
+	x[grados+1]=valorx
+	para i=1 hasta grados Hacer
+		Escribir ("escriba el valor que acompaña a x"),i
+		leer valorx //valorx = el valor qeu acompaña a x
+		x[i]=(valorx)
+	FinPara
+	//iniciando el Proceso 
+	Para j=1 hasta 2 hacer
+	para i=grados+1 hasta 1 Hacer
+		si i=grados+1 Entonces
+			f[j]=x[grados+1]+f[j]
+		SiNo
+			f[j]=x[i]*IF[j]^i+f[j]
+		FinSi
+	FinPara
+	Escribir ("la funsion con el valor de intervalo "),IF[j],(" es igual a "),f[j]
+FinPara
+si f[1] <0 y f[2] >=0   Entonces
+	Escribir ("se puede continuar con el proceso porque el resultado es de signo contrario ")
+sino 
+	si f[1] >=0 y f[2] <0 Entonces
+		Escribir ("se puede continuar con el proceso porque el resultado es de signo contrario ")
+	sino 
+		Escribir ("cambie el valor de los intervalos ")
+	FinSi
+FinSi
+Escribir ("defina el numero de interaciones")
+leer interacciones
+xr=IF[1]
+para i=1 hasta interacciones Hacer
+	xr=((IF[2]+xr)/2)
+	Escribir ("interaccion "),i,(" valor de "),xr
+FinPara
+FinAlgoritmo

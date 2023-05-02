@@ -1,0 +1,56 @@
+Algoritmo sin_titulo
+	definir vx Como Real
+	Escribir ("escriba los valores de x que se estudiaran ")
+	leer nt//numero de tabulaciones
+	Dimension IF[nt]
+	Dimension f[nt]
+	Dimension l[nt]
+	para i=1 hasta nt Hacer
+		Escribir ("escriba el valor inicial para x"),i
+		leer  a//valorx = el valor qeu acompaña a x
+		IF[i]=a
+	FinPara
+	Escribir ("designe los grados de la funsion")
+	leer Grados//grados= para conocer el No. de x en la funsion
+	Dimension x[grados+1]
+	Escribir ("escriba el valor que acompaña a x0")
+	leer valorx //valorx = el valor qeu acompaña a x
+	x[grados+1]=valorx
+	para i=1 hasta grados Hacer
+		Escribir ("escriba el valor que acompaña a x"),i
+		leer valorx //valorx = el valor qeu acompaña a x
+		x[i]=(valorx)
+	FinPara
+	//iniciando el Proceso 
+	Para j=1 hasta nt hacer
+		para i=grados+1 hasta 1 Hacer
+			si i=grados+1 Entonces
+				f[j]=x[grados+1]+f[j]
+			SiNo
+				f[j]=x[i]*IF[j]^i+f[j]
+			FinSi
+		FinPara
+		Escribir ("la funsion con el valor de x "),IF[j],(" es igual a "),f[j]
+	FinPara
+	Escribir ("defina el valor de x a buscar ")
+	leer vx //vx=valor de x
+	//hallando los limites
+	para j=1 hasta nt Hacer
+		l[j]=1
+		para i=1 hasta nt Hacer
+			si i=j Entonces
+			l[j]= ((vx+1-vx)/(j+1-i))*l[j]
+			sino	
+			l[j]= ((vx-i)/(j-i))*l[j]
+			FinSi
+		FinPara
+		Escribir ("defina el valor de x a buscar "),l[j]
+	FinPara
+	
+	para i=1 hasta nt hacer
+		ft=(l[i]*f[i])+ft
+	FinPara
+	Escribir ("defina el valor de x a buscar "),ft
+	
+	
+FinAlgoritmo
