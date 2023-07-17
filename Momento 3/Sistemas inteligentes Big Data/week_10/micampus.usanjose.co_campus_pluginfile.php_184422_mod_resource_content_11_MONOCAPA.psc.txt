@@ -1,0 +1,114 @@
+Algoritmo Red_monocapa_sigmoide_simetrico
+	//funsion de salida sigmoide simetrico
+	Definir w,b,p,e Como Real
+	escribir ("escriba el numero de entradas")
+	leer ne // siendo ne = No. entradas
+	escribir ("escriba el numero de posibilidades")
+	leer np // siendo np= No.posibilidades que se refiere a las combinaciones que pueden tener las entradas
+	escribir ("defina el numero de neuronas")
+	leer nn //numero de neuronas
+	Dimension w[ne]
+	Dimension p[np,ne]
+	Dimension a[np,nn]
+	Dimension se[np,nn]
+	Dimension e[np,nn]
+	//ingreso de valores al azar 
+	Para j <- 1 Hasta ne Con Paso 1 Hacer
+		w[j] <- azar(10)
+	Fin Para
+	b <- azar(10)
+	// ingreso de valores de entrada P
+	Para J<-1 Hasta ne Hacer
+		Para I<-1 Hasta np Hacer
+			Escribir 'valor de entrada ',I,',para el P',J,':'
+			Leer p[I,J]
+			si p[I,J] = 0 Entonces
+				p[I,J]= -1
+			FinSi
+		FinPara
+	FinPara
+	//ingreso de valores de salida deseada
+	Para J<- 1 Hasta nn Hacer
+		Para I<-1 Hasta np Hacer
+			Escribir 'valor de SE',I,' de la neurona ',J,' :'
+			Leer se[I,J] //se = salida esperada
+			si se[I,J] = 0 Entonces
+				se[I,J]= -1
+			FinSi
+			e[I,J]<-0
+		FinPara
+	FinPara
+	//valores iniciales
+	sn <- 0
+	aprendizaje<-1 //Factor de aprendisaje su rango debe ser un entero unidad o decimal entre 1 a 20
+	euler <- 2.72
+	k<-0 //valor para conteo de interacciones opcional
+	Repetir
+		Para m <- 1 Hasta nn Con Paso 1 Hacer
+			//se define las interacciones	
+			Repetir
+				et=0
+				para i <- 1 hasta np Con Paso 1 Hacer
+					Para j<- 1 Hasta ne Con Paso 1 Hacer
+						sn = (w[j]*p[i,j])+sn
+					Fin Para
+					sn= sn + b
+					//funsion de salida
+					Si sn >= 1 Entonces
+						a[i,m] =1//(euler^(sn)-euler^(-sn))/(euler^(sn)+euler^(-sn))
+					SiNo 
+						a[i,m] = -1
+					Fin Si
+					sn =0 // salida neta valor inicial
+					e[i,m]=se[i,m]-a[i,m]
+					pa <- (100*a[i,m])/se[i,m] // pa = probabilidad
+					si pa >= 85  Entonces //sentencia para determinar el numero de interacciones
+						et=1+et
+					FinSi
+					//nuevos valores
+					Para j<- 1 Hasta ne Con Paso 1 Hacer
+						w[j]=w[j]+(2*aprendizaje*e[i,m]*p[i,j])
+					Fin Para
+					b=b+(2*aprendizaje*e[i,m])
+				fin para
+			Hasta Que et=np
+		fin para
+		k<-k+1
+	Hasta Que  k=np
+	//generando el menu para que se repita las opcciones
+	Repetir
+		Escribir 'desea continuar?: '
+		Leer nota
+		si nota <= 1 Entonces
+			Para J<-1 Hasta ne Hacer
+				Escribir 'valor de entrada ',I,',para el P',J,':'
+				Leer p[1,J]
+				si p[1,J] = 0 Entonces
+					p[1,J]= -1
+				FinSi
+			FinPara
+			Para j<- 1 Hasta ne Con Paso 1 Hacer
+				sn = (w[j]*p[1,j])+sn
+			Fin Para
+			sn= sn + b
+			//funsion de salida
+			Si sn >= 1 Entonces
+				a[1,1] =1//(euler^(sn)-euler^(-sn))/(euler^(sn)+euler^(-sn))
+			SiNo 
+				a[1,1] = -1
+			Fin Si
+			sn =0 // salida neta valor inicial
+			Para j<-1 Hasta nn Hacer
+				si a[1,j] <= 0 Entonces //convertir numeros -1 a 0 (aplicado en la logica matematica
+					a[1,j] = 0
+					Escribir 'valor de SO',I,' de la neurona ',j,' :',a[1,1]
+				SiNo
+					si a[1,J] > 0 Entonces
+						a[1,j]= 1
+						Escribir 'salida obtenida de la neurona ',j,' :',a[1,1]
+					FinSi
+				FinSi
+			FinPara
+		FinSi
+	Hasta Que nota >= 2
+FinAlgoritmo

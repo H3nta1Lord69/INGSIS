@@ -1,0 +1,64 @@
+Algoritmo nuevo_perceptron
+	Definir w,b,p Como Entero
+	escribir ("escriba el numero de entradas")
+	leer ne // siendo ne = No. entradas
+	escribir ("escriba el numero de posibilidades")
+	leer np // siendo np= No.posibilidades que se refiere a las combinaciones que pueden tener las entradas
+		Dimension w[ne]
+		Dimension p[np,ne]
+		Dimension a[np]
+		Dimension se[np]
+		//ingreso de valores al azar 
+		Para j <- 1 Hasta ne Con Paso 1 Hacer
+			w[j] <- azar(1)+2
+		Fin Para
+		b <- azar(1)+2
+		// ingreso de valores de entrada P
+		Para J<-1 Hasta ne Hacer
+			Para I<-1 Hasta np Hacer
+				Escribir 'valor de entrada ',I,',para el P',J,':'
+				Leer p[I,J]
+			FinPara
+		FinPara
+		//ingreso de valores de salida deseada
+		Para I<-1 Hasta np Hacer
+			Escribir 'valor de SE',I,':'
+			Leer se[I] //se = salida esperada
+		FinPara
+		//valores iniciales
+		e<-0
+		sn <- 0
+		//se define las interacciones
+		escribir ("defina el numero de intracciones")
+		leer k
+		Para n <- 1 Hasta k Con Paso 1 Hacer
+			para i <- 1 hasta np Con Paso 1 Hacer
+			Para j<- 1 Hasta ne Con Paso 1 Hacer
+				sn = (w[j]*p[i,j])+sn
+			Fin Para
+			sn= sn + b
+			//funsion de salida
+			Si sn >= 1 Entonces
+				a[i] = se[i]
+			SiNo
+				a[i] = 0
+			Fin Si
+			sn =0 // salida neta valor inicial
+			e=se[i]-a[i]
+			//nuevos valores
+				Para j<- 1 Hasta ne Con Paso 1 Hacer
+					w[j]=w[j]+(e*p[i,j])
+				Fin Para
+			b=b+e
+		fin para
+		Fin Para
+		//resultados 
+        Para I<-1 Hasta np Hacer
+            Escribir 'valor de SO',I,',:',a[I]
+        FinPara
+		Para i<-1 Hasta ne Con Paso 1 Hacer
+			Escribir 'valor peso w',i,': ',w[i]
+		Fin Para
+		Escribir 'valor bias b: ',b
+		
+FinAlgoritmo
